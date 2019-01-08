@@ -9,6 +9,18 @@ namespace TheGame.Utility
 {
     public static class GearLoader
     {
+        public static InventoryItem LoadArmor(string armorName)
+        {
+            StreamReader file = new StreamReader("..\\..\\..\\Armor\\Armor.csv");
+            while (true)
+            {
+                InventoryItem ii = makeItem(file.ReadLine());
+                if (ii.TextureName == armorName)
+                {
+                    return ii;
+                }
+            }
+        }
         public static InventoryItem LoadWeapon(string weaponName)
         {
             StreamReader file = new StreamReader("..\\..\\..\\Weapons\\Weapons.csv");

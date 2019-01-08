@@ -24,24 +24,12 @@ namespace TheGameNamespace.GameObjects
             this.map = map;
             map.Initialize();
             // Delete
-            // this.enemies.Add(new testEnemy(new Coordinates(5, 5)));
+            this.enemies.Add(new testEnemy(new Coordinates(30, 30)));
             this.NPCs.Add(new testNPC(new Coordinates(2, 2)));
         }
         public void Draw()
         {
             this.map.Draw(this.enemies, this.NPCs);
-            /*foreach (Enemy e in this.enemies)
-            {
-                e.Draw();
-            }
-            foreach (NPC n in this.NPCs)
-            {
-                n.Draw();
-            }
-            if (Pause.IsPaused)
-            {
-
-            }*/
         }
         public Map returnMap()
         {

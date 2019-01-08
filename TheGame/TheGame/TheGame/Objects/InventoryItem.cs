@@ -16,7 +16,7 @@ namespace TheGame.Objects
         public int Damage { get; private set; }
         public int Armor { get; private set; }
         public int Weight { get; private set; }
-        private GameTexture gameTexture;
+        public GameTexture gameTexture;
 
         public InventoryItem(string name, string textureName, SlotType slotType, int damage, int armor, int weight, Offset offset)
         {

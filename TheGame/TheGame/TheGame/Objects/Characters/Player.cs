@@ -11,6 +11,11 @@ namespace TheGame.Objects.Characters
     {
         public Player(Coordinates coordinates) : base(coordinates, "player")
         {
+            this.Health = 100;
+            this.MaximumHealth = 100;
+            this.Stamina = 100;
+            this.MaximumStamina = 100;
+            this.speed = 0.5;
         }
         public new void Draw()
         {

@@ -13,7 +13,7 @@ namespace TheGame.Objects
     {
         public int weight { get; private set; }
         private List<InventoryItem> spareItems;
-        private List<Slot> slots;
+        public  List<Slot> slots { get; private set; }
         private List<GameTexture> InventoryTextures;
         public Inventory()
         {
@@ -33,10 +33,14 @@ namespace TheGame.Objects
 
             this.spareItems.Add(GearLoader.LoadWeapon("testWeapon"));
         }
-        public void Draw(Coordinates coordinates)
+        public void Draw(Coordinates coordinates, bool isFacingRight)
         {
             foreach (Slot s in this.slots)
             {
+                if (s.inventoryItem != null)
+                {
+                    s.inventoryItem.gameTexture.ChangeDirection(isFacingRight);
+                }
                 s.Draw(coordinates);
             }
         }
@@ -57,17 +61,19 @@ namespace TheGame.Objects
 
         public void DrawInventory()
         {
+            int moveX = 7;
+            int moveY = 5;
             for (int y = 0; y < 5; y++)
             {
                 for (int x = 0; x < 6; x++)
                 {
                     if (y * 6 + x + 1 > this.spareItems.Count)
                     {
-                        this.InventoryTextures[0].Draw(x + GraficStuff.Player.Coordinates.x + y, (y * 2) + GraficStuff.Player.Coordinates.y);
+                        this.InventoryTextures[0].Draw(x + GraficStuff.Player.Coordinates.x + y - moveX, (y * 2) + GraficStuff.Player.Coordinates.y - moveY);
                     }
                     else
                     {
-                        this.InventoryTextures[1].Draw(x + GraficStuff.Player.Coordinates.x + y, (y * 2) + GraficStuff.Player.Coordinates.y);
+                        this.InventoryTextures[1].Draw(x + GraficStuff.Player.Coordinates.x + y - moveX, (y * 2) + GraficStuff.Player.Coordinates.y - moveY);
                     }
                 }
             }
@@ -75,30 +81,30 @@ namespace TheGame.Objects
             {
                 if (this.slots[x].inventoryItem == null)
                 {
-                    this.InventoryTextures[0].Draw(x + GraficStuff.Player.Coordinates.x + 5, (5 * 2) + GraficStuff.Player.Coordinates.y);
+                    this.InventoryTextures[0].Draw(x + GraficStuff.Player.Coordinates.x + 5 - moveX, (5 * 2) + GraficStuff.Player.Coordinates.y - moveY);
                 }
                 else
                 {
-                    this.InventoryTextures[1].Draw(x + GraficStuff.Player.Coordinates.x + 5, (5 * 2) + GraficStuff.Player.Coordinates.y);
+                    this.InventoryTextures[1].Draw(x + GraficStuff.Player.Coordinates.x + 5 - moveX, (5 * 2) + GraficStuff.Player.Coordinates.y - moveY);
                 }
             }
 
-            this.InventoryTextures[2].Draw(6 + GraficStuff.Player.Coordinates.x, 0 + GraficStuff.Player.Coordinates.y);
-            this.InventoryTextures[3].Draw(InventorySelection.Coordinates.x + GraficStuff.Player.Coordinates.x + InventorySelection.Coordinates.y, (InventorySelection.Coordinates.y * 2) + GraficStuff.Player.Coordinates.y);
+            this.InventoryTextures[2].Draw(6 + GraficStuff.Player.Coordinates.x - moveX, 0 + GraficStuff.Player.Coordinates.y - moveY);
+            this.InventoryTextures[3].Draw(InventorySelection.Coordinates.x + GraficStuff.Player.Coordinates.x + InventorySelection.Coordinates.y - moveX, (InventorySelection.Coordinates.y * 2) + GraficStuff.Player.Coordinates.y - moveY);
 
-            GraficStuff.Player.texture.Draw(9.8F + GraficStuff.Player.Coordinates.x, 5F + GraficStuff.Player.Coordinates.y);
+            GraficStuff.Player.texture.Draw(9.8F + GraficStuff.Player.Coordinates.x - moveX, 5F + GraficStuff.Player.Coordinates.y - moveY);
             if (InventorySelection.SpareIndex >= 0)
             {
                 if (InventorySelection.SpareIndex <= this.spareItems.Count - 1)
                 {
-                    this.spareItems[InventorySelection.SpareIndex].Draw(new Coordinates(9.8F + GraficStuff.Player.Coordinates.x, 5F + GraficStuff.Player.Coordinates.y));
+                    this.spareItems[InventorySelection.SpareIndex].Draw(new Coordinates(9.8F + GraficStuff.Player.Coordinates.x - moveX, 5F + GraficStuff.Player.Coordinates.y - moveY));
                 }
             }
             if (InventorySelection.SlotIndex >= 0)
             {
                 if (InventorySelection.SlotIndex <= this.slots.Count - 1)
                 {
-                    this.slots[InventorySelection.SlotIndex].Draw(new Coordinates(9.8F + GraficStuff.Player.Coordinates.x, 5F + GraficStuff.Player.Coordinates.y));
+                    this.slots[InventorySelection.SlotIndex].Draw(new Coordinates(9.8F + GraficStuff.Player.Coordinates.x - moveX, 5F + GraficStuff.Player.Coordinates.y - moveY));
                 }
             }      
         }

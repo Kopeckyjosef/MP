@@ -9,6 +9,7 @@ using TheGameNamespace.Objects.MapObject.TerrainObject;
 using TheGameNamespace.Objects.MapObject;
 using TheGameNamespace.Objects.MapObject.FloorObject;
 using TheGame.Objects.MapObject.Doors;
+using TheGame.Objects.MapObject.TerrainObject;
 
 namespace TheGameNamespace.Utility
 {
@@ -20,6 +21,8 @@ namespace TheGameNamespace.Utility
             {
                 case "TestWallBack":
                     return new TestWallBack(new Coordinates(x, y));
+                case "TestWallBackShort":
+                    return new TestWallBackShort(new Coordinates(x, y));
                 case "TestWallFront":
                     return new TestWallFront(new Coordinates(x, y));
                 case "TestWallLeft":

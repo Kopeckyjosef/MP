@@ -11,6 +11,7 @@ namespace TheGameNamespace.Objects.MapObject
         BackWall,
         RightWall,
         LeftWall,
+        BackWallShort,
         Obstacle,
         Floor
     }
@@ -34,6 +35,7 @@ namespace TheGameNamespace.Objects.MapObject
                 case TerrainType.Floor: offSet.x = 0; offSet.y = 0; break;
                 case TerrainType.FrontWall: offSet.x = 8; offSet.y = -6F; break;
                 case TerrainType.BackWall: offSet.x = 0F; offSet.y = -24F; break;
+                case TerrainType.BackWallShort: offSet.x = 0F; offSet.y = 2F; break;
                 case TerrainType.LeftWall: offSet.x = 16; offSet.y = -32F; break;
                 case TerrainType.RightWall: offSet.x = 0; offSet.y = -6F; break;
                 default: offSet.x = 0; offSet.y = 0; break;

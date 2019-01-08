@@ -14,6 +14,8 @@ namespace TheGame.Utility
     {
         public static readonly int Scale = 3;
         public static Player Player;
+        public static int windowHeight;
+        public static int windowWidth;
         public static SpriteBatch SpriteBatch { get; private set; }
         public static Offset WindowOffset { get; private set; }
         public  static ContentManager Content { get; private set; }
@@ -22,6 +24,8 @@ namespace TheGame.Utility
             GraficStuff.SpriteBatch = spriteBatch;
             GraficStuff.Content = content;
             GraficStuff.WindowOffset = new Offset(windowWidth / 2 - 8, windowHeight / 2 - 4);
+            GraficStuff.windowHeight = windowHeight;
+            GraficStuff.windowWidth = windowWidth;
         }
     }
 }

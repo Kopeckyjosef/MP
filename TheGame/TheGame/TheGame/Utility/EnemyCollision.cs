@@ -10,82 +10,83 @@ namespace TheGame.Utility
 {
     public static class EnemyCollision
     {
-        private static Map map;
-        public static Player Player  { get; private set; }
-
-        public static void Initialize(Map map, Player player)
+        public static void GoForPlayer(Enemy enemy)
         {
-            EnemyCollision.map = map;
-            EnemyCollision.Player = player;
-        }
-        public static void MoveEnemy(Vector vector, Enemy enemy)
-        {
-            Coordinates way = EnemyCollision.findWay(enemy);
-
-            enemy.Coordinates.x += way.x;
-            enemy.Coordinates.y += way.y;
-
-            /*if (!map.terrain.Where(x =>
-                x.Coordinates.x <= enemy.coordinates.x + vector.x + 0.5 &&
-                x.Coordinates.x >= enemy.coordinates.x + vector.x - 0.5 &&
-                x.Coordinates.y <= enemy.coordinates.y + vector.y + 0.5 &&
-                x.Coordinates.y >= enemy.coordinates.y + vector.y - 0.5
-                ).Any())
-            {
-                enemy.coordinates.x += vector.x;
-                enemy.coordinates.y += vector.y;
-            }*/
-        }
-        private static Coordinates findWay(Enemy enemy)
-        {
-            List<WavePoint> old = new List<WavePoint>();
-            List<WavePoint> last = new List<WavePoint>();
-
-            old.Add(new WavePoint(enemy.Coordinates.x, enemy.Coordinates.y, new List<WavePoint>()));
-
-            for (int i = 0; i < 50; i++)
-            {
-                foreach (WavePoint w in old)
+            WavePoint wp = FindPlayer(enemy);
+            if (wp != null)
+            {     
+                try
                 {
-                    WavePoint[] points = w.Spread();
+                    
+                    Vector v = new Vector(wp.Origins[0].Coordinates.x - wp.Origins[1].Coordinates.x, wp.Origins[0].Coordinates.y - wp.Origins[1].Coordinates.y);
+                    enemy.Coordinates.x -= (float)(enemy.speed * v.x);
+                    enemy.Coordinates.y -= (float)(enemy.speed * v.y);
+                    /*enemy.Coordinates.x = wp.Origins[1].Coordinates.x;
+                    enemy.Coordinates.y = wp.Origins[1].Coordinates.y;*/
+                }
+                catch
+                {
 
-                    foreach (WavePoint point in points)
+                }
+            }
+        }
+        public static WavePoint FindPlayer(Enemy enemy)
+        {
+            WavePoint firstWP = new WavePoint(enemy.Coordinates.x, enemy.Coordinates.y, new List<WavePoint>());
+            List<WavePoint> wavePoints = new List<WavePoint>();
+            List<WavePoint> usedWavePoints = new List<WavePoint>();
+            List<WavePoint> newWavePoints = new List<WavePoint>();
+            wavePoints.Add(firstWP);
+            for (int i = 0; i < 10 ; i++)
+            {
+                foreach (WavePoint wp in wavePoints)
+                {
+                    WavePoint[] newWavePointsPack = wp.Spread();
+                    foreach (WavePoint w in newWavePointsPack)
                     {
-                        if (old.Where(x => x.Coordinates.x == point.Coordinates.x && x.Coordinates.y == point.Coordinates.y).Any())
+                        if (GraficStuff.Player.Coordinates.x <= w.Coordinates.x + 0.5 &&
+                            GraficStuff.Player.Coordinates.x >= w.Coordinates.x - 0.5 &&
+                            GraficStuff.Player.Coordinates.y <= w.Coordinates.y + 0.5 &&
+                            GraficStuff.Player.Coordinates.y >= w.Coordinates.y - 0.5)
+                        {
+                            return w;
+                        }
+                        else if (usedWavePoints.Where(x => x.Coordinates.x == w.Coordinates.x && x.Coordinates.y == w.Coordinates.y).Any())
                         {
                             continue;
                         }
-                        if (last.Where(x => x.Coordinates.x == point.Coordinates.x && x.Coordinates.y == point.Coordinates.y).Any())
+                        else if (wavePoints.Where(x => x.Coordinates.x == w.Coordinates.x && x.Coordinates.y == w.Coordinates.y).Any())
                         {
                             continue;
                         }
-                        if (!map.terrain.Where(x =>
-                            x.Coordinates.x <= point.Coordinates.x + 0.5 &&
-                            x.Coordinates.x >= point.Coordinates.x - 0.5 &&
-                            x.Coordinates.y <= point.Coordinates.y + 0.5 &&
-                            x.Coordinates.y >= point.Coordinates.y - 0.5
-                            ).Any())
+                        else if (newWavePoints.Where(x => x.Coordinates.x == w.Coordinates.x && x.Coordinates.y == w.Coordinates.y).Any())
                         {
-                            last.Add(point);
+                            continue;
                         }
-                        if (
-                            GraficStuff.Player.Coordinates.x <= point.Coordinates.x + 0.5 &&
-                            GraficStuff.Player.Coordinates.x >= point.Coordinates.x - 0.5 &&
-                            GraficStuff.Player.Coordinates.y <= point.Coordinates.y + 0.5 &&
-                            GraficStuff.Player.Coordinates.y >= point.Coordinates.y - 0.5
-                           )
+                        else if (Access.Gamebody.returnMap().terrain.Where(terrain =>
+                                terrain.Coordinates.x <= w.Coordinates.x + 0.5 &&
+                                terrain.Coordinates.x >= w.Coordinates.x - 0.5 &&
+                                terrain.Coordinates.y <= w.Coordinates.y + 0.5 &&
+                                terrain.Coordinates.y >= w.Coordinates.y - 0.5
+                                ).Any())
                         {
-                            return new Coordinates(point.Origins[0].Coordinates.x, point.Origins[0].Coordinates.y);
+                            continue;
+                        }
+                        else
+                        {
+                            newWavePoints.Add(w);
                         }
                     }
                 }
-                old = last;
-                last = new List<WavePoint>();
+                foreach (WavePoint w in wavePoints)
+                {
+                    usedWavePoints.Add(w);
+                }
+                wavePoints = newWavePoints;
+                newWavePoints = new List<WavePoint>();
             }
-            return new Coordinates(enemy.Coordinates.x, enemy.Coordinates.y);
+            return null;
         }
-
-        
     }
     public class WavePoint
     {
@@ -96,7 +97,11 @@ namespace TheGame.Utility
         {
             this.Coordinates.x = x;
             this.Coordinates.y = y;
-            this.Origins = l;
+            this.Origins = new List<WavePoint>();
+            foreach (WavePoint w in l)
+            {
+                this.Origins.Add(w);
+            }
         }
         public WavePoint[] Spread()
         {

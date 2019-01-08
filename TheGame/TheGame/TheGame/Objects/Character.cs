@@ -11,10 +11,14 @@ namespace TheGame.Objects
 {
     public class Character : HasCoordinates
     {
-        public Inventory Inventory { get; private set; }
+        public int Health { get; protected set; }
+        public int MaximumHealth { get; protected set; }
+        public int Stamina { get; protected set; }
+        public int MaximumStamina { get; protected set; }
+        public Inventory Inventory { get; protected set; }
         public GameTexture texture;
         protected string name;
-        protected double speed;
+        public double speed;
         public bool isFacingRight { get; private set; }
         public void ChangeDirection(bool isFacingRight)
         {
@@ -28,10 +32,52 @@ namespace TheGame.Objects
             this.Coordinates = coordinates;
             this.Inventory = new Inventory();
         }
+        public void TakeDmg(int damage)
+        {
+            int armor = 0;
+            foreach(Slot s in this.Inventory.slots)
+            {
+                if (s.inventoryItem != null)
+                {
+                    armor += s.inventoryItem.Armor;
+                } 
+            }
+            this.Health -= (damage / 100) * (100 - armor);
+            if (this.Health <= 0)
+            {
+                this.Die();
+            }
+        }
+        public int DealDmg()
+        {
+            int damage = 0;
+            foreach (Slot s in this.Inventory.slots)
+            {
+                if (s.inventoryItem != null)
+                {
+                    damage += s.inventoryItem.Damage;
+                }
+            }
+            return damage;
+        }
+        public void Die()
+        {
+            if (Access.Gamebody.returnEnemies().Contains(this))
+            {
+                Access.Gamebody.returnEnemies().Remove((Enemy)this);
+            }
+            else if (Access.Gamebody.returnNPCs().Contains(this))
+            {
+                Access.Gamebody.returnNPCs().Remove((NPC)this);
+            }
+            else {
+
+            }
+        }
         public override void Draw()
         {
             this.texture.Draw((float)this.Coordinates.x, (float)this.Coordinates.y);
-            this.Inventory.Draw(this.Coordinates);
+            this.Inventory.Draw(this.Coordinates, this.isFacingRight);
         }
     }
 }

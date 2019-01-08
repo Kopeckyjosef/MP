@@ -14,6 +14,8 @@ namespace TheGame.Utility
         private KeyboardState lastKeyboard;
         private Player player;
         private Collision collision;
+
+        private bool alreadyPressed;
         public UserInput(Player player, Collision collision)
         {
             this.player = player;
@@ -22,14 +24,19 @@ namespace TheGame.Utility
 
         public void GetUserInput()
         {
+            this.lastKeyboard = Keyboard.GetState();
             if (Pause.IsPaused)
             {
                 if (Pause.PauseType == PauseType.Inventory)
                 {
-                    this.lastKeyboard = Keyboard.GetState();
-                    if (this.lastKeyboard.IsKeyDown(Keys.I))
+                    if (this.lastKeyboard.IsKeyUp(Keys.I))
+                    {
+                        this.alreadyPressed = false;
+                    }
+                    if (this.lastKeyboard.IsKeyDown(Keys.I) && !this.alreadyPressed)
                     {
                         Pause.UnPause();
+                        this.alreadyPressed = true;
                     }
                     if (this.lastKeyboard.IsKeyDown(Keys.D))
                     {
@@ -59,7 +66,6 @@ namespace TheGame.Utility
             }
             else
             {
-                this.lastKeyboard = Keyboard.GetState();
                 if (this.lastKeyboard.IsKeyDown(Keys.D))
                 {
                     this.collision.MovePlayer(new Vector(0.3F, 0));
@@ -76,9 +82,18 @@ namespace TheGame.Utility
                 {
                     this.collision.MovePlayer(new Vector(0, 0.3F));
                 }
-                if (this.lastKeyboard.IsKeyDown(Keys.I))
+                if (this.lastKeyboard.IsKeyUp(Keys.I))
+                {
+                    this.alreadyPressed = false;
+                }
+                if (this.lastKeyboard.IsKeyDown(Keys.I) && !this.alreadyPressed)
                 {
                     Pause.PauseGame(PauseType.Inventory);
+                    this.alreadyPressed = true;
+                }
+                if (this.lastKeyboard.IsKeyDown(Keys.J))
+                {
+                    this.collision.Attack();
                 }
                 if (this.lastKeyboard.IsKeyDown(Keys.E))
                 {

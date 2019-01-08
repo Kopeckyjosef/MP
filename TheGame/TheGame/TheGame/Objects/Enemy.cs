@@ -12,13 +12,16 @@ namespace TheGame.Objects
     {
         public Enemy(Coordinates coordinates, string name) : base(coordinates, name)
         {
+            this.speed = 1;
+            this.Health = 400;
         }
 
         public void OnUpdate()
         {
-            Vector dFP = new Vector(EnemyCollision.Player.Coordinates.x - this.Coordinates.x, EnemyCollision.Player.Coordinates.y - this.Coordinates.y);
+            EnemyCollision.GoForPlayer(this);
+            /*Vector dFP = new Vector(EnemyCollision.Player.Coordinates.x - this.Coordinates.x, EnemyCollision.Player.Coordinates.y - this.Coordinates.y);
 
-            EnemyCollision.MoveEnemy(new Vector((float)(this.speed * dFP.x / Math.Abs(dFP.x)), (float)(this.speed * dFP.y / Math.Abs(dFP.y))), this);
+            EnemyCollision.MoveEnemy(new Vector((float)(this.speed * dFP.x / Math.Abs(dFP.x)), (float)(this.speed * dFP.y / Math.Abs(dFP.y))), this);*/
         }
     }
 }

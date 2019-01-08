@@ -145,6 +145,33 @@
       <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\testWeapon.xnb</Output>
       <Time>2019-01-04T11:56:54.6208259+01:00</Time>
     </Item>
+    <Item>
+      <Source>bottomBar.png</Source>
+      <Name>bottomBar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\bottomBar.xnb</Output>
+      <Time>2019-01-07T22:17:48.9123489+01:00</Time>
+    </Item>
+    <Item>
+      <Source>bottomBarHealth.png</Source>
+      <Name>bottomBarHealth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\bottomBarHealth.xnb</Output>
+      <Time>2019-01-07T23:02:51.5116584+01:00</Time>
+    </Item>
+    <Item>
+      <Source>bottomBarStamina.png</Source>
+      <Name>bottomBarStamina</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\bottomBarStamina.xnb</Output>
+      <Time>2019-01-07T23:02:54.0843159+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{55BE99FD-A76F-40AC-BF71-C96D7A9886FD}</ContentProjectGUID>

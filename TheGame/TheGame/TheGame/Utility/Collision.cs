@@ -40,8 +40,35 @@ namespace TheGame.Utility
                     this.Player.ChangeDirection(false);
                 }
                 
-                this.Player.Coordinates.x += vector.x;
-                this.Player.Coordinates.y += vector.y;
+                this.Player.Coordinates.x += (float)(vector.x * this.Player.speed);
+                this.Player.Coordinates.y += (float)(vector.y * this.Player.speed);
+            }
+        }
+        public void Attack()
+        {
+            if (this.Player.isFacingRight)
+            {
+                List<Enemy> en = Access.Gamebody.returnEnemies().Where(x =>
+                    x.Coordinates.x <= this.Player.Coordinates.x + 1 &&
+                    x.Coordinates.x >= this.Player.Coordinates.x &&
+                    x.Coordinates.y <= this.Player.Coordinates.y + 1 &&
+                    x.Coordinates.y >= this.Player.Coordinates.y - 1).ToList();
+                foreach (Enemy e in en)
+                {
+                    e.TakeDmg(this.Player.DealDmg());
+                }
+            }
+            else
+            {
+                List<Enemy> en = Access.Gamebody.returnEnemies().Where(x =>
+                    x.Coordinates.x <= this.Player.Coordinates.x &&
+                    x.Coordinates.x >= this.Player.Coordinates.x - 1 &&
+                    x.Coordinates.y <= this.Player.Coordinates.y + 1 &&
+                    x.Coordinates.y >= this.Player.Coordinates.y - 1).ToList();
+                foreach (Enemy e in en)
+                {
+                    e.TakeDmg(this.Player.DealDmg());
+                }
             }
         }
         public void ActivateTile()

@@ -77,6 +77,7 @@
     <Compile Include="Objects\MapObject\FloorObject\TestFloor.cs" />
     <Compile Include="Objects\Map.cs" />
     <Compile Include="Objects\MapObject\Door.cs" />
+    <Compile Include="Objects\MapObject\TerrainObject\TestWallBackShort.cs" />
     <Compile Include="Objects\NPC.cs" />
     <Compile Include="Objects\Offset.cs" />
     <Compile Include="Objects\Quest.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Utility\Access.cs" />
+    <Compile Include="Utility\BottomBar.cs" />
     <Compile Include="Utility\Collision.cs" />
     <Compile Include="Utility\EnemyCollision.cs" />
     <Compile Include="Utility\GearLoader.cs" />
@@ -120,6 +122,7 @@
     <Folder Include="Objects\InventoryItems\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Armor\Armor.csv" />
     <None Include="Maps\Additional\Map.csv" />
     <None Include="Maps\Map.csv" />
     <None Include="Weapons\Weapons.csv" />

@@ -30,3 +30,6 @@ d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\C
 d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\background.xnb
 d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\dropped.xnb
 d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\testWeapon.xnb
+d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\bottomBar.xnb
+d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\bottomBarHealth.xnb
+d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\bottomBarStamina.xnb

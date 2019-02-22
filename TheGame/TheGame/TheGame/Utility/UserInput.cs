@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +14,19 @@ namespace TheGame.Utility
     {
         private KeyboardState lastKeyboard;
         private Player player;
-        private Collision collision;
+        private List<Keys> alreadyPressed = new List<Keys>();
 
-        private bool alreadyPressed;
-        public UserInput(Player player, Collision collision)
+        private int timer;
+        private List<Keys> alreadyUsed = new List<Keys>();
+        public UserInput(Player player)
         {
             this.player = player;
-            this.collision = collision;
+            this.timer = 0;
         }
 
-        public void GetUserInput()
+        public void GetUserInput(GameTime gameTime)
         {
+            this.timer += gameTime.ElapsedGameTime.Milliseconds;
             this.lastKeyboard = Keyboard.GetState();
             if (Pause.IsPaused)
             {
@@ -31,36 +34,66 @@ namespace TheGame.Utility
                 {
                     if (this.lastKeyboard.IsKeyUp(Keys.I))
                     {
-                        this.alreadyPressed = false;
+                        this.alreadyPressed.Remove(Keys.I);
                     }
-                    if (this.lastKeyboard.IsKeyDown(Keys.I) && !this.alreadyPressed)
+                    if (this.lastKeyboard.IsKeyDown(Keys.I) && !this.alreadyPressed.Contains(Keys.I))
                     {
                         Pause.UnPause();
-                        this.alreadyPressed = true;
+                        this.alreadyPressed.Add(Keys.I);
                     }
-                    if (this.lastKeyboard.IsKeyDown(Keys.D))
+                    if (this.lastKeyboard.IsKeyUp(Keys.D))
+                    {
+                        this.alreadyPressed.Remove(Keys.D);
+                    }
+                    if (this.lastKeyboard.IsKeyDown(Keys.D) && !this.alreadyPressed.Contains(Keys.D))
                     {
                         InventorySelection.Right();
+                        this.alreadyPressed.Add(Keys.D);
                     }
-                    if (this.lastKeyboard.IsKeyDown(Keys.A))
+                    if (this.lastKeyboard.IsKeyUp(Keys.A))
+                    {
+                        this.alreadyPressed.Remove(Keys.A);
+                    }
+                    if (this.lastKeyboard.IsKeyDown(Keys.A) && !this.alreadyPressed.Contains(Keys.A))
                     {
                         InventorySelection.Left();
+                        this.alreadyPressed.Add(Keys.A);
                     }
-                    if (this.lastKeyboard.IsKeyDown(Keys.W))
+                    if (this.lastKeyboard.IsKeyUp(Keys.W))
+                    {
+                        this.alreadyPressed.Remove(Keys.W);
+                    }
+                    if (this.lastKeyboard.IsKeyDown(Keys.W) && !this.alreadyPressed.Contains(Keys.W))
                     {
                         InventorySelection.Up();
+                        this.alreadyPressed.Add(Keys.W);
                     }
-                    if (this.lastKeyboard.IsKeyDown(Keys.S))
+                    if (this.lastKeyboard.IsKeyUp(Keys.S))
+                    {
+                        this.alreadyPressed.Remove(Keys.S);
+                    }
+                    if (this.lastKeyboard.IsKeyDown(Keys.S) && !this.alreadyPressed.Contains(Keys.S))
                     {
                         InventorySelection.Down();
+                        this.alreadyPressed.Add(Keys.S);
                     }
-                    if (this.lastKeyboard.IsKeyDown(Keys.E))
+                    if (this.lastKeyboard.IsKeyUp(Keys.Q))
                     {
-                        GraficStuff.Player.Inventory.Equip();
+                        this.alreadyPressed.Remove(Keys.Q);
                     }
-                    if (this.lastKeyboard.IsKeyDown(Keys.Q))
+                    if (this.lastKeyboard.IsKeyDown(Keys.Q) && !this.alreadyPressed.Contains(Keys.Q))
                     {
                         GraficStuff.Player.Inventory.DropItem();
+                        this.alreadyPressed.Add(Keys.Q);
+                    }
+                    if (this.lastKeyboard.IsKeyUp(Keys.E))
+                    {
+                        this.alreadyPressed.Remove(Keys.E);
+                    }
+                    if (this.lastKeyboard.IsKeyDown(Keys.E) && !this.alreadyPressed.Contains(Keys.E))
+                    {
+                        GraficStuff.Player.Inventory.Equip();
+                        this.alreadyPressed.Add(Keys.E);
                     }
                 }
             }
@@ -68,37 +101,45 @@ namespace TheGame.Utility
             {
                 if (this.lastKeyboard.IsKeyDown(Keys.D))
                 {
-                    this.collision.MovePlayer(new Vector(0.3F, 0));
+                    Collision.MovePlayer(new Vector((float)(GraficStuff.Player.speed * gameTime.ElapsedGameTime.Milliseconds / 1000), 0));
                 }
                 if (this.lastKeyboard.IsKeyDown(Keys.A))
                 {
-                    this.collision.MovePlayer(new Vector(-0.3F, 0));
+                    Collision.MovePlayer(new Vector((float)(GraficStuff.Player.speed * gameTime.ElapsedGameTime.Milliseconds / 1000 * -1), 0));
                 }
                 if (this.lastKeyboard.IsKeyDown(Keys.W))
                 {
-                    this.collision.MovePlayer(new Vector(0, -0.3F));
+                    Collision.MovePlayer(new Vector(0, (float)(GraficStuff.Player.speed * gameTime.ElapsedGameTime.Milliseconds / 1000 * -1)));
                 }
                 if (this.lastKeyboard.IsKeyDown(Keys.S))
                 {
-                    this.collision.MovePlayer(new Vector(0, 0.3F));
+                    Collision.MovePlayer(new Vector(0, (float)(GraficStuff.Player.speed * gameTime.ElapsedGameTime.Milliseconds / 1000)));
+                }
+                if (this.lastKeyboard.IsKeyDown(Keys.Q))
+                {
+                    Access.Gamebody.LoadNewLevel("Map");
                 }
                 if (this.lastKeyboard.IsKeyUp(Keys.I))
                 {
-                    this.alreadyPressed = false;
+                    this.alreadyPressed.Remove(Keys.I);
                 }
-                if (this.lastKeyboard.IsKeyDown(Keys.I) && !this.alreadyPressed)
+                if (this.lastKeyboard.IsKeyDown(Keys.I) && !this.alreadyPressed.Contains(Keys.I))
                 {
                     Pause.PauseGame(PauseType.Inventory);
-                    this.alreadyPressed = true;
+                    this.alreadyPressed.Add(Keys.I);
                 }
                 if (this.lastKeyboard.IsKeyDown(Keys.J))
                 {
-                    this.collision.Attack();
+                    Collision.Attack();
                 }
                 if (this.lastKeyboard.IsKeyDown(Keys.E))
                 {
-                    this.collision.ActivateTile();
+                    Collision.ActivateTile();
                 }
+            }
+            if (this.timer >= 1000)
+            {
+                this.timer = this.timer - 1000;
             }
         }
     }

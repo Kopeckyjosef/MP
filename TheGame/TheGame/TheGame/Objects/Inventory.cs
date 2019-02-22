@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TheGame.Objects.MapObject.FloorObject;
+using TheGame.Objects.MapObject.TerrainItems;
 using TheGame.Utility;
 using TheGameNamespace.Objects;
 
@@ -31,7 +31,11 @@ namespace TheGame.Objects
             this.slots.Add(new Slot(SlotType.Boots));
             this.slots.Add(new Slot(SlotType.Weapon));
 
-            this.spareItems.Add(GearLoader.LoadWeapon("testWeapon"));
+            this.spareItems.Add(GearLoader.LoadEquip("Iron Helm"));
+            this.spareItems.Add(GearLoader.LoadEquip("Iron Chest"));
+            this.spareItems.Add(GearLoader.LoadEquip("Iron Legs"));
+            this.spareItems.Add(GearLoader.LoadEquip("Iron Boots"));
+            this.spareItems.Add(GearLoader.LoadEquip("Poor Sword"));
         }
         public void Draw(Coordinates coordinates, bool isFacingRight)
         {
@@ -45,9 +49,26 @@ namespace TheGame.Objects
             }
         }
 
+        public void ChangeDirection(bool isFacingRight, int playerWidth)
+        {
+            foreach (Slot s in this.slots)
+            {
+                if (s.inventoryItem != null)
+                {
+                    s.inventoryItem.FlipDirection(isFacingRight, playerWidth);
+                }
+            }
+            foreach (InventoryItem i in this.spareItems)
+            {
+                i.FlipDirection(isFacingRight, playerWidth);
+            }
+        }
+
         public void AddItem(InventoryItem inventoryItem)
         {
+            
             this.spareItems.Add(inventoryItem);
+            
         }
 
         public void DropItem()
@@ -93,6 +114,13 @@ namespace TheGame.Objects
             this.InventoryTextures[3].Draw(InventorySelection.Coordinates.x + GraficStuff.Player.Coordinates.x + InventorySelection.Coordinates.y - moveX, (InventorySelection.Coordinates.y * 2) + GraficStuff.Player.Coordinates.y - moveY);
 
             GraficStuff.Player.texture.Draw(9.8F + GraficStuff.Player.Coordinates.x - moveX, 5F + GraficStuff.Player.Coordinates.y - moveY);
+            foreach (Slot s in GraficStuff.Player.Inventory.slots)
+            {
+                if (s.inventoryItem != null)
+                {
+                    s.inventoryItem.Draw(new Coordinates(9.8F + GraficStuff.Player.Coordinates.x - moveX, 5F + GraficStuff.Player.Coordinates.y - moveY));
+                }
+            }
             if (InventorySelection.SpareIndex >= 0)
             {
                 if (InventorySelection.SpareIndex <= this.spareItems.Count - 1)

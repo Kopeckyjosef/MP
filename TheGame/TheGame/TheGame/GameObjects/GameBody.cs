@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace TheGameNamespace.GameObjects
 {
     public class GameBody
     {
+        public GameTime GameTime;
         public static int Quests { get; set; }
         public static int Events { get; set; }
         private LevelBody LevelBody { get; set; }
@@ -23,10 +25,12 @@ namespace TheGameNamespace.GameObjects
         {
             this.player = new Player(new Coordinates(2, 2));
         }
-        public void LoadNewLevel(string mapName, ContentManager content)
+        public void LoadNewLevel(string mapName)
         {
-            Map map = MapController.GetMap(mapName, content);
+            Map map = MapController.GetMap(mapName);
             this.LevelBody = new LevelBody(map);
+            this.player.Coordinates = new Coordinates(2, 2);
+            Collision.newMap(this);
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -36,9 +40,10 @@ namespace TheGameNamespace.GameObjects
                 this.player.Inventory.DrawInventory();
             }
         }
-        public void OnUpdate()
+        public void OnUpdate(GameTime gameTime)
         {
-            this.LevelBody.OnUpdate();
+            this.GameTime = gameTime;
+            this.LevelBody.OnUpdate(gameTime);
         }
         public Map returnMap()
         {
@@ -51,6 +56,10 @@ namespace TheGameNamespace.GameObjects
         public List<Enemy> returnEnemies()
         {
             return this.LevelBody.returnEnemies();
+        }
+        public List<Temporary> returnTemporary()
+        {
+            return this.LevelBody.returnTemporary();
         }
     }
 }

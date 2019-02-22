@@ -10,8 +10,9 @@ namespace TheGame.Objects
 {
     public class GameTexture
     {
-        private Texture2D texture;
-        private Offset offSet;
+        public Texture2D texture { get; private set; }
+        public  Offset offSet { get; private set; }
+
         private SpriteEffects spriteEffect = SpriteEffects.None;
         public GameTexture(Texture2D texture, Offset offSet)
         {
@@ -28,6 +29,11 @@ namespace TheGame.Objects
             {
                 this.spriteEffect = SpriteEffects.FlipHorizontally;
             }
+        }
+
+        public void ChangeOffset(Offset newOffset)
+        {
+            this.offSet = newOffset;
         }
         public void Draw(float x, float y)
         {

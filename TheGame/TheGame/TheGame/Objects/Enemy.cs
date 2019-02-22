@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +11,23 @@ namespace TheGame.Objects
 {
     public class Enemy : Character
     {
+        public WavePoint CurrentPath;
         public Enemy(Coordinates coordinates, string name) : base(coordinates, name)
         {
-            this.speed = 1;
+            this.Timer = 0;
+            this.CurrentPath = new WavePoint(coordinates.x, coordinates.y, new List<WavePoint>());
+            this.speed = 3;
             this.Health = 400;
         }
 
-        public void OnUpdate()
+        public void OnUpdate(GameTime gameTime)
         {
-            EnemyCollision.GoForPlayer(this);
-            /*Vector dFP = new Vector(EnemyCollision.Player.Coordinates.x - this.Coordinates.x, EnemyCollision.Player.Coordinates.y - this.Coordinates.y);
-
-            EnemyCollision.MoveEnemy(new Vector((float)(this.speed * dFP.x / Math.Abs(dFP.x)), (float)(this.speed * dFP.y / Math.Abs(dFP.y))), this);*/
+            this.Timer += gameTime.ElapsedGameTime.Milliseconds;
+            EnemyCollision.GoForPlayer(this, gameTime);
+            if (this.Timer > 500)
+            {
+                this.Timer -= 500;
+            }
         }
     }
 }

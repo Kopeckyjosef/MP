@@ -11,10 +11,12 @@ namespace TheGame.Objects
 {
     public class Character : HasCoordinates
     {
-        public int Health { get; protected set; }
-        public int MaximumHealth { get; protected set; }
-        public int Stamina { get; protected set; }
-        public int MaximumStamina { get; protected set; }
+        public int Timer { get; set; }
+        public int Level { get; set; }
+        public int Health { get; set; }
+        public int MaximumHealth { get; set; }
+        public int Stamina { get; set; }
+        public int MaximumStamina { get; set; }
         public Inventory Inventory { get; protected set; }
         public GameTexture texture;
         protected string name;
@@ -24,6 +26,7 @@ namespace TheGame.Objects
         {
             this.texture.ChangeDirection(isFacingRight);
             this.isFacingRight = isFacingRight;
+            this.Inventory.ChangeDirection(isFacingRight, this.texture.texture.Width);
         }
 
         public Character(Coordinates coordinates, string name)

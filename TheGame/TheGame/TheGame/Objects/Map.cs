@@ -3,7 +3,8 @@ using TheGame.Objects;
 using System.Linq;
 using TheGame.Utility;
 using TheGameNamespace.Objects.MapObject;
-using TheGame.Objects.MapObject.FloorObject;
+using TheGameNamespace.GameObjects;
+using TheGame.Objects.MapObject.TerrainItems;
 
 namespace TheGameNamespace.Objects
 {
@@ -15,11 +16,15 @@ namespace TheGameNamespace.Objects
             this.floor = new List<Terrain>();
             this.terrain = new List<Terrain>();
             this.Dropped = new List<Dropped>();
+            this.Chests = new List<Chest>();
         }
+        public string Name;
         public List<Terrain> allObjects;
         public List<Terrain> terrain;
         public List<Terrain> floor;
         public List<Dropped> Dropped;
+        public List<Teleport> Teleports;
+        public List<Chest> Chests;
 
         public void Draw(List<Enemy> enemies, List<NPC> npcs)
         {
@@ -51,7 +56,7 @@ namespace TheGameNamespace.Objects
                     var list = everything
                         .Where(x => x is Terrain)
                         .Select(x => (Terrain)x)
-                        .Where(x => x.Coordinates.y < o.Coordinates.y + 1 && x.Coordinates.y > o.Coordinates.y && x.Coordinates.x < o.Coordinates.x + 0.8 && x.Coordinates.x > o.Coordinates.x - 0.8)
+                        .Where(x => x.Coordinates.y < o.Coordinates.y + 1.3 && x.Coordinates.y > o.Coordinates.y && x.Coordinates.x < o.Coordinates.x + 0.8 && x.Coordinates.x > o.Coordinates.x - 0.8)
                         .ToList();
                     foreach (Terrain t in list)
                     {

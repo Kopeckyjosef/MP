@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,23 +11,50 @@ namespace TheGame.Utility
 {
     public static class EnemyCollision
     {
-        public static void GoForPlayer(Enemy enemy)
+        public static void GoForPlayer(Enemy enemy, GameTime gameTime)
         {
-            WavePoint wp = FindPlayer(enemy);
-            if (wp != null)
-            {     
+            if (enemy.Timer >= 500)
+            {
+                enemy.CurrentPath = FindPlayer(enemy);
+            }
+            else
+            {
+                float pointCoordinateX;
+                float pointCoordinateY;
                 try
                 {
-                    
-                    Vector v = new Vector(wp.Origins[0].Coordinates.x - wp.Origins[1].Coordinates.x, wp.Origins[0].Coordinates.y - wp.Origins[1].Coordinates.y);
-                    enemy.Coordinates.x -= (float)(enemy.speed * v.x);
-                    enemy.Coordinates.y -= (float)(enemy.speed * v.y);
-                    /*enemy.Coordinates.x = wp.Origins[1].Coordinates.x;
-                    enemy.Coordinates.y = wp.Origins[1].Coordinates.y;*/
+                    pointCoordinateX = enemy.CurrentPath.Origins[0].Coordinates.x;
+                    pointCoordinateY = enemy.CurrentPath.Origins[0].Coordinates.y;
                 }
                 catch
                 {
+                    return;
+                }
+                if (pointCoordinateX > enemy.Coordinates.x - 0.35 &&
+                    pointCoordinateX < enemy.Coordinates.x + 0.35 &&
+                    pointCoordinateY > enemy.Coordinates.y - 0.35 &&
+                    pointCoordinateY < enemy.Coordinates.y + 0.35)
+                {
+                    enemy.CurrentPath.Origins.Remove(enemy.CurrentPath.Origins[0]);
+                    pointCoordinateX = enemy.CurrentPath.Origins[0].Coordinates.x;
+                    pointCoordinateY = enemy.CurrentPath.Origins[0].Coordinates.y;
+                }
 
+                if (pointCoordinateX > enemy.Coordinates.x)
+                {
+                    enemy.Coordinates.x += (float)(gameTime.ElapsedGameTime.Milliseconds * enemy.speed / 1000);
+                }
+                if (pointCoordinateY > enemy.Coordinates.y)
+                {
+                    enemy.Coordinates.y += (float)(gameTime.ElapsedGameTime.Milliseconds * enemy.speed / 1000 / 2);
+                }
+                if (pointCoordinateX < enemy.Coordinates.x)
+                {
+                    enemy.Coordinates.x -= (float)(gameTime.ElapsedGameTime.Milliseconds * enemy.speed / 1000);
+                }
+                if (pointCoordinateY < enemy.Coordinates.y)
+                {
+                    enemy.Coordinates.y -= (float)(gameTime.ElapsedGameTime.Milliseconds * enemy.speed / 1000 / 2);
                 }
             }
         }

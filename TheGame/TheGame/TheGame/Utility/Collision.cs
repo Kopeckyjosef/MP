@@ -4,107 +4,132 @@ using System.Linq;
 using System.Text;
 using TheGame.Objects;
 using TheGame.Objects.Characters;
+using TheGameNamespace.GameObjects;
 using TheGameNamespace.Objects;
 
 namespace TheGame.Utility
 {
-    public class Collision
+    public static class Collision
     {
-        private Map map;
-        private List<NPC> NPCs;
-        List<Enemy> enemies;
-        public Player Player { get; private set; }
+        private static Map map;
+        private static List<NPC> NPCs;
+        public static List<Enemy> enemies;
+        public static Player Player { get; private set; }
 
-        public Collision(Map map, List<NPC> NPCs, List<Enemy> enemies, Player player)
+        public static void Init()
         {
-            this.map = Access.Gamebody.returnMap();
-            this.NPCs = NPCs;
-            this.enemies = enemies;
-            this.Player = player;
+            map = Access.Gamebody.returnMap();
+            NPCs = Access.Gamebody.returnNPCs();
+            enemies = Access.Gamebody.returnEnemies();
+            Player = GraficStuff.Player;
         }
-        public void MovePlayer(Vector vector)
+        public static void newMap(GameBody gb)
+        {
+            map = gb.returnMap();
+            NPCs = gb.returnNPCs();
+            enemies = gb.returnEnemies();
+        }
+        public static void MovePlayer(Vector vector)
         {
             if (!map.terrain.Where(x => 
-                x.Coordinates.x <= this.Player.Coordinates.x + vector.x + 0.5 &&
-                x.Coordinates.x >= this.Player.Coordinates.x + vector.x - 0.5 &&
-                x.Coordinates.y <= this.Player.Coordinates.y + vector.y + 0.5 &&
-                x.Coordinates.y >= this.Player.Coordinates.y + vector.y - 0.5
+                x.Coordinates.x <= Player.Coordinates.x + vector.x + 0.5 &&
+                x.Coordinates.x >= Player.Coordinates.x + vector.x - 1 &&
+                x.Coordinates.y <= Player.Coordinates.y + vector.y + 0.5 &&
+                x.Coordinates.y >= Player.Coordinates.y + vector.y - 0.5
                 ).Any())
             {
                 if (vector.x > 0)
                 {
-                    this.Player.ChangeDirection(true);
+                    Player.ChangeDirection(true);
                 }
                 else if (vector.x < 0)
                 {
-                    this.Player.ChangeDirection(false);
+                    Player.ChangeDirection(false);
                 }
                 
-                this.Player.Coordinates.x += (float)(vector.x * this.Player.speed);
-                this.Player.Coordinates.y += (float)(vector.y * this.Player.speed);
+                Player.Coordinates.x += (float)(vector.x);
+                Player.Coordinates.y += (float)(vector.y);
+            }
+            else
+            {
+                string a = "";
             }
         }
-        public void Attack()
+        public static void Attack()
         {
-            if (this.Player.isFacingRight)
+            Access.Gamebody.returnTemporary().Add(TemporaryCreater.returnWeaponSlash(GraficStuff.Player.isFacingRight, GraficStuff.Player.Coordinates));
+            if (Player.isFacingRight)
             {
                 List<Enemy> en = Access.Gamebody.returnEnemies().Where(x =>
-                    x.Coordinates.x <= this.Player.Coordinates.x + 1 &&
-                    x.Coordinates.x >= this.Player.Coordinates.x &&
-                    x.Coordinates.y <= this.Player.Coordinates.y + 1 &&
-                    x.Coordinates.y >= this.Player.Coordinates.y - 1).ToList();
+                    x.Coordinates.x <= Player.Coordinates.x + 1 &&
+                    x.Coordinates.x >= Player.Coordinates.x &&
+                    x.Coordinates.y <= Player.Coordinates.y + 1 &&
+                    x.Coordinates.y >= Player.Coordinates.y - 1).ToList();
                 foreach (Enemy e in en)
                 {
-                    e.TakeDmg(this.Player.DealDmg());
+                    e.TakeDmg(Player.DealDmg());
                 }
             }
             else
             {
                 List<Enemy> en = Access.Gamebody.returnEnemies().Where(x =>
-                    x.Coordinates.x <= this.Player.Coordinates.x &&
-                    x.Coordinates.x >= this.Player.Coordinates.x - 1 &&
-                    x.Coordinates.y <= this.Player.Coordinates.y + 1 &&
-                    x.Coordinates.y >= this.Player.Coordinates.y - 1).ToList();
+                    x.Coordinates.x <= Player.Coordinates.x &&
+                    x.Coordinates.x >= Player.Coordinates.x - 1 &&
+                    x.Coordinates.y <= Player.Coordinates.y + 1 &&
+                    x.Coordinates.y >= Player.Coordinates.y - 1).ToList();
                 foreach (Enemy e in en)
                 {
-                    e.TakeDmg(this.Player.DealDmg());
+                    e.TakeDmg(Player.DealDmg());
                 }
             }
         }
-        public void ActivateTile()
+        public static void ActivateTile()
         {
             try
             {
-                if (this.Player.isFacingRight)
+                if (Player.isFacingRight)
                 {
                     try
                     {
-                        map.terrain.Where(terrain =>
-                            terrain.Coordinates.x <= this.Player.Coordinates.x + 1 &&
-                            terrain.Coordinates.x >= this.Player.Coordinates.x &&
-                            terrain.Coordinates.y <= this.Player.Coordinates.y + 0.5 &&
-                            terrain.Coordinates.y >= this.Player.Coordinates.y - 0.5
-                            ).FirstOrDefault().OnActivation();
+                        var a = map.Teleports.Where(terrain =>
+                            terrain.Coordinates.x <= Player.Coordinates.x + 1 &&
+                            terrain.Coordinates.x >= Player.Coordinates.x &&
+                            terrain.Coordinates.y <= Player.Coordinates.y + 0.7 &&
+                            terrain.Coordinates.y >= Player.Coordinates.y - 0.7
+                            ).FirstOrDefault();
+                        a.OnActivation();
                     }
                     catch
                     {
                         try
                         {
                             map.Dropped.Where(terrain =>
-                                terrain.Coordinates.x <= this.Player.Coordinates.x + 1 &&
-                                terrain.Coordinates.x >= this.Player.Coordinates.x &&
-                                terrain.Coordinates.y <= this.Player.Coordinates.y + 0.5 &&
-                                terrain.Coordinates.y >= this.Player.Coordinates.y - 0.5
+                                terrain.Coordinates.x <= Player.Coordinates.x + 1 &&
+                                terrain.Coordinates.x >= Player.Coordinates.x &&
+                                terrain.Coordinates.y <= Player.Coordinates.y + 0.7 &&
+                                terrain.Coordinates.y >= Player.Coordinates.y - 0.7
                                 ).FirstOrDefault().OnActivation();
                         }
                         catch
                         {
-                            this.NPCs.Where(npc =>
-                                npc.Coordinates.x <= this.Player.Coordinates.x + 2 &&
-                                npc.Coordinates.x >= this.Player.Coordinates.x &&
-                                npc.Coordinates.y <= this.Player.Coordinates.y + 0.5 &&
-                                npc.Coordinates.y >= this.Player.Coordinates.y - 0.5
-                                ).FirstOrDefault().OnActivation();
+                            try
+                            {
+                                map.Chests.Where(terrain =>
+                                    terrain.Coordinates.x <= Player.Coordinates.x + 1 &&
+                                    terrain.Coordinates.x >= Player.Coordinates.x &&
+                                    terrain.Coordinates.y <= Player.Coordinates.y + 0.7 &&
+                                    terrain.Coordinates.y >= Player.Coordinates.y - 0.7
+                                    ).FirstOrDefault().OnActivation();
+                            }
+                            catch
+                            {
+                                NPCs.Where(npc =>
+                                    npc.Coordinates.x <= Player.Coordinates.x + 2 &&
+                                    npc.Coordinates.x >= Player.Coordinates.x &&
+                                    npc.Coordinates.y <= Player.Coordinates.y + 0.7 &&
+                                    npc.Coordinates.y >= Player.Coordinates.y - 0.7
+                                    ).FirstOrDefault().OnActivation();
+                            }
                         }
                     }
                 }
@@ -112,22 +137,49 @@ namespace TheGame.Utility
                 {
                     try
                     {
-                        map.terrain.Where(terrain =>
-                            terrain.Coordinates.x <= this.Player.Coordinates.x &&
-                            terrain.Coordinates.x >= this.Player.Coordinates.x - 1 &&
-                            terrain.Coordinates.y <= this.Player.Coordinates.y + 0.5 &&
-                            terrain.Coordinates.y >= this.Player.Coordinates.y - 0.5
-                            ).FirstOrDefault().OnActivation();
+                        var a = map.Teleports.Where(terrain =>
+                            terrain.Coordinates.x <= Player.Coordinates.x &&
+                            terrain.Coordinates.x >= Player.Coordinates.x - 2 &&
+                            terrain.Coordinates.y <= Player.Coordinates.y + 0.7 &&
+                            terrain.Coordinates.y >= Player.Coordinates.y - 0.7
+                            ).FirstOrDefault();
+                        a.OnActivation();
                     }
                     catch
                     {
-                        this.NPCs.Where(npc =>
-                            npc.Coordinates.x <= this.Player.Coordinates.x &&
-                            npc.Coordinates.x >= this.Player.Coordinates.x - 2 &&
-                            npc.Coordinates.y <= this.Player.Coordinates.y + 0.5 &&
-                            npc.Coordinates.y >= this.Player.Coordinates.y - 0.5
-                            ).FirstOrDefault().OnActivation();
-                    }      
+                        try
+                        {
+                            var suitable = map.Dropped.Where(terrain =>
+                                    terrain.Coordinates.x <= Player.Coordinates.x &&
+                                    terrain.Coordinates.x >= Player.Coordinates.x - 1 &&
+                                    terrain.Coordinates.y <= Player.Coordinates.y + 0.7 &&
+                                    terrain.Coordinates.y >= Player.Coordinates.y - 0.7
+                                    ).FirstOrDefault();
+                            suitable.OnActivation();
+                        }
+                        catch
+                        {
+                            try
+                            {
+                                var suitable = map.Chests.Where(terrain =>
+                                    terrain.Coordinates.x <= Player.Coordinates.x &&
+                                    terrain.Coordinates.x >= Player.Coordinates.x - 1 &&
+                                    terrain.Coordinates.y <= Player.Coordinates.y + 0.7 &&
+                                    terrain.Coordinates.y >= Player.Coordinates.y - 0.7
+                                    ).FirstOrDefault();
+                                suitable.OnActivation();
+                            }
+                            catch
+                            {
+                                NPCs.Where(npc =>
+                                    npc.Coordinates.x <= Player.Coordinates.x &&
+                                    npc.Coordinates.x >= Player.Coordinates.x - 2 &&
+                                    npc.Coordinates.y <= Player.Coordinates.y + 0.7 &&
+                                    npc.Coordinates.y >= Player.Coordinates.y - 0.7
+                                    ).FirstOrDefault().OnActivation();
+                            }
+                        }
+                    }   
                 } 
             }
             catch

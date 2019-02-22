@@ -1,1 +1,11 @@
-﻿
+﻿Leather Chest;armor/armor_leather_chest;Chest;0;10;5;0;0
+Leather Boots;armor/armor_leather_feet;Boots;0;10;5;0;0
+Leather Helm;armor/armor_leather_head;Head;0;10;5;0;0
+Leather Legs;armor/armor_leather_legs;Legs;0;10;5;0;0
+Poor Sword;weapon/poor_sword;Weapon;5;0;2;-6;0
+Iron Chest;armor/armor_iron_chest;Chest;0;15;7;0;0
+Iron Boots;armor/armor_iron_feet;Boots;0;15;7;0;0
+Iron Helm;armor/armor_iron_head;Head;0;15;7;0;0
+Iron Legs;armor/armor_iron_legs;Legs;0;15;7;0;0
+
+Name ; texture ; slotType ; damage ; armor ; weight ; offset

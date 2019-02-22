@@ -21,7 +21,6 @@ namespace TheGame
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        Collision collision;
         UserInput userInput;
         GameBody gameBody;
         private int windowHeight = 700;
@@ -43,10 +42,11 @@ namespace TheGame
             BottomBar.Init();
             GameStarter.Initialize();
             this.gameBody = GameStarter.ReturnGameBody(this.Content);
-            this.gameBody.LoadNewLevel("Map", this.Content);
-            Access.SetGameBody(this.gameBody);
-            this.userInput = new UserInput(this.gameBody.player, new Collision(this.gameBody.returnMap(), this.gameBody.returnNPCs(), this.gameBody.returnEnemies(), this.gameBody.player));
             GraficStuff.Player = this.gameBody.player;
+            this.gameBody.LoadNewLevel("StartCrypt");
+            Access.SetGameBody(this.gameBody);
+            Collision.Init();
+            this.userInput = new UserInput(this.gameBody.player);
             graphics.PreferredBackBufferWidth = windowWidth;
             graphics.PreferredBackBufferHeight = windowHeight;
             graphics.IsFullScreen = false;
@@ -62,8 +62,8 @@ namespace TheGame
         }
         protected override void Update(GameTime gameTime)
         {
-            this.gameBody.OnUpdate();
-            this.userInput.GetUserInput();
+            this.gameBody.OnUpdate(gameTime);
+            this.userInput.GetUserInput(gameTime);
             base.Update(gameTime);
         }
         protected override void Draw(GameTime gameTime)

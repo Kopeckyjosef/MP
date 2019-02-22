@@ -9,48 +9,48 @@ namespace TheGame.Utility
 {
     public static class GearLoader
     {
-        public static InventoryItem LoadArmor(string armorName)
+        public static InventoryItem LoadEquip(string gearName)
         {
             StreamReader file = new StreamReader("..\\..\\..\\Armor\\Armor.csv");
             while (true)
             {
-                InventoryItem ii = makeItem(file.ReadLine());
-                if (ii.TextureName == armorName)
+                string line = file.ReadLine();
+                if (line == "" || line == null)
+                {
+                    return null;
+                }
+                InventoryItem ii = makeItem(line);
+                if (ii.Name == gearName)
                 {
                     return ii;
                 }
             }
         }
-        public static InventoryItem LoadWeapon(string weaponName)
+        public static InventoryItem LoadTypedEquip(string gearTypeName)
         {
-            StreamReader file = new StreamReader("..\\..\\..\\Weapons\\Weapons.csv");
+            StreamReader file = new StreamReader("..\\..\\..\\Armor\\Armor.csv");
+            List<InventoryItem> itemList = new List<InventoryItem>();
             while (true)
             {
-                InventoryItem ii = makeItem(file.ReadLine());
-                if (ii.TextureName == weaponName)
+                string line = file.ReadLine();
+                if (line == "" || line == null)
                 {
-                    return ii;
+                    break;
+                }
+                InventoryItem ii = makeItem(line);
+                if (ii.Name.Contains(gearTypeName))
+                {
+                    itemList.Add(ii);
                 }
             }
+            Random r = new Random();
+            int i = r.Next(0, itemList.Count - 1);
+            return itemList[i];
         }
 
         private static InventoryItem makeItem(string line)
         {
-            string[] stats = new string[8];
-            int index = 0;
-
-            foreach (char c in line)
-            {
-                if (c == ';')
-                {
-                    index += 1;
-                    continue;
-                }
-                else
-                {
-                    stats[index] += c;
-                }
-            }
+            string[] stats = line.Split(';');
 
             SlotType st;
             switch (stats[2])

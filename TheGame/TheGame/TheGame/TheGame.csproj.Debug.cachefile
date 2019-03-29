@@ -42,3 +42,6 @@ Content\walls\Floor_Field.xnb
 Content\walls\Floor_Grass.xnb
 Content\walls\WallLeftShort_Stone.xnb
 Content\npcs\farmer.xnb
+Content\walls\WallBack_DoorTeleport.xnb
+Content\walls\WallFront_DoorTeleport.xnb
+Content\enemies\Krakus.xnb

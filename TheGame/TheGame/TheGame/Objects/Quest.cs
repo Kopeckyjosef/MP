@@ -16,6 +16,7 @@ namespace TheGameNamespace.Objects
         public string NextQuest;
         public int QuestCounter;
         public int RewardXP;
+        public int StateCode;
         public InventoryItem RewardItem;
         public Quest(string name, string description, string nextQuest, string rewardXP, string rewardItem)
         {

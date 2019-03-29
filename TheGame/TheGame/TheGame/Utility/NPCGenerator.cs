@@ -39,7 +39,7 @@ namespace TheGame.Utility
                 }
                 else
                 {
-                    r = null; // TODO
+                    r = null;
                 }
                 enemies.Add(GenerateNPC(new Coordinates(float.Parse(data[0]), float.Parse(data[1])), data[2], r, QuestController.LoadQuest(data[4]), data[5]));
             }

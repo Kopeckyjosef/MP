@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>testdoor.png</Source>
+      <Name>testdoor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\testdoor.xnb</Output>
+      <Time>2018-11-28T19:53:15.7953306+01:00</Time>
+    </Item>
+    <Item>
+      <Source>npc.png</Source>
+      <Name>npc</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\npc.xnb</Output>
+      <Time>2018-12-06T07:59:46.6752492+01:00</Time>
+    </Item>
+    <Item>
+      <Source>enemy.png</Source>
+      <Name>enemy</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\enemy.xnb</Output>
+      <Time>2018-12-06T08:00:06.7351053+01:00</Time>
+    </Item>
+    <Item>
+      <Source>inventoryDetail.png</Source>
+      <Name>inventoryDetail</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\inventoryDetail.xnb</Output>
+      <Time>2018-12-26T15:04:32.4940874+01:00</Time>
+    </Item>
+    <Item>
+      <Source>inventoryTile.png</Source>
+      <Name>inventoryTile</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\inventoryTile.xnb</Output>
+      <Time>2018-12-26T15:04:32.4940874+01:00</Time>
+    </Item>
+    <Item>
+      <Source>inventoryTileFull.png</Source>
+      <Name>inventoryTileFull</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\inventoryTileFull.xnb</Output>
+      <Time>2018-12-26T15:04:32.4940874+01:00</Time>
+    </Item>
+    <Item>
+      <Source>inventorySelection.png</Source>
+      <Name>inventorySelection</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\inventorySelection.xnb</Output>
+      <Time>2018-12-26T16:56:38.2524141+01:00</Time>
+    </Item>
+    <Item>
+      <Source>background.png</Source>
+      <Name>background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\background.xnb</Output>
+      <Time>2019-01-03T08:40:37.3086291+01:00</Time>
+    </Item>
+    <Item>
+      <Source>dropped.png</Source>
+      <Name>dropped</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\dropped.xnb</Output>
+      <Time>2019-01-04T11:49:43.0224673+01:00</Time>
+    </Item>
+    <Item>
+      <Source>testWeapon.png</Source>
+      <Name>testWeapon</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\testWeapon.xnb</Output>
+      <Time>2019-01-04T11:56:54.6208259+01:00</Time>
+    </Item>
+    <Item>
+      <Source>bottomBar.png</Source>
+      <Name>bottomBar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\bottomBar.xnb</Output>
+      <Time>2019-01-07T22:17:48.9123489+01:00</Time>
+    </Item>
+    <Item>
+      <Source>bottomBarHealth.png</Source>
+      <Name>bottomBarHealth</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\bottomBarHealth.xnb</Output>
+      <Time>2019-01-07T23:02:51.5116584+01:00</Time>
+    </Item>
+    <Item>
+      <Source>bottomBarStamina.png</Source>
+      <Name>bottomBarStamina</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\bottomBarStamina.xnb</Output>
+      <Time>2019-01-07T23:02:54.0843159+01:00</Time>
+    </Item>
+    <Item>
+      <Source>WeaponSlash.png</Source>
+      <Name>WeaponSlash</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\WeaponSlash.xnb</Output>
+      <Time>2019-02-05T19:41:49.2964127+01:00</Time>
+    </Item>
+    <Item>
+      <Source>TeleportBack_Test.png</Source>
+      <Name>TeleportBack_Test</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\TeleportBack_Test.xnb</Output>
+      <Time>2019-02-08T16:20:34.8518614+01:00</Time>
+    </Item>
+    <Item>
+      <Source>character\player.png</Source>
+      <Name>character\player</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\character\player.xnb</Output>
+      <Time>2019-02-13T14:22:58.4781759+01:00</Time>
+    </Item>
+    <Item>
+      <Source>armor\armor_leather_chest.png</Source>
+      <Name>armor\armor_leather_chest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\armor\armor_leather_chest.xnb</Output>
+      <Time>2019-02-13T14:27:59.0321242+01:00</Time>
+    </Item>
+    <Item>
+      <Source>armor\armor_leather_feet.png</Source>
+      <Name>armor\armor_leather_feet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\armor\armor_leather_feet.xnb</Output>
+      <Time>2019-02-13T14:27:59.0341169+01:00</Time>
+    </Item>
+    <Item>
+      <Source>armor\armor_leather_head.png</Source>
+      <Name>armor\armor_leather_head</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\armor\armor_leather_head.xnb</Output>
+      <Time>2019-02-13T14:27:59.0351346+01:00</Time>
+    </Item>
+    <Item>
+      <Source>armor\armor_leather_legs.png</Source>
+      <Name>armor\armor_leather_legs</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\armor\armor_leather_legs.xnb</Output>
+      <Time>2019-02-13T14:27:59.0291316+01:00</Time>
+    </Item>
+    <Item>
+      <Source>armor\armor_iron_chest.png</Source>
+      <Name>armor\armor_iron_chest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\armor\armor_iron_chest.xnb</Output>
+      <Time>2019-02-13T14:59:46.1952911+01:00</Time>
+    </Item>
+    <Item>
+      <Source>armor\armor_iron_feet.png</Source>
+      <Name>armor\armor_iron_feet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\armor\armor_iron_feet.xnb</Output>
+      <Time>2019-02-13T14:59:46.1952911+01:00</Time>
+    </Item>
+    <Item>
+      <Source>armor\armor_iron_head.png</Source>
+      <Name>armor\armor_iron_head</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\armor\armor_iron_head.xnb</Output>
+      <Time>2019-02-13T14:59:46.1952911+01:00</Time>
+    </Item>
+    <Item>
+      <Source>armor\armor_iron_legs.png</Source>
+      <Name>armor\armor_iron_legs</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\armor\armor_iron_legs.xnb</Output>
+      <Time>2019-02-13T14:59:46.1952911+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\Floor_tornCarpet.png</Source>
+      <Name>walls\Floor_tornCarpet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\Floor_tornCarpet.xnb</Output>
+      <Time>2019-02-13T15:36:44.2098503+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\Ceiling.png</Source>
+      <Name>walls\Ceiling</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\Ceiling.xnb</Output>
+      <Time>2019-02-14T15:44:07.6218732+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\WallBack_cobblestone.png</Source>
+      <Name>walls\WallBack_cobblestone</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\WallBack_cobblestone.xnb</Output>
+      <Time>2019-02-18T17:51:47.4333104+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\WallFront_cobblestone.png</Source>
+      <Name>walls\WallFront_cobblestone</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\WallFront_cobblestone.xnb</Output>
+      <Time>2019-02-18T18:37:36.7887793+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\WallLeft_Cobblestone.png</Source>
+      <Name>walls\WallLeft_Cobblestone</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\WallLeft_Cobblestone.xnb</Output>
+      <Time>2019-02-18T17:51:47.4312877+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\WallRight_cobblestone.png</Source>
+      <Name>walls\WallRight_cobblestone</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\WallRight_cobblestone.xnb</Output>
+      <Time>2019-02-18T17:51:47.4323006+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\Floor_cobblestone.png</Source>
+      <Name>walls\Floor_cobblestone</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\Floor_cobblestone.xnb</Output>
+      <Time>2019-02-18T18:33:08.0393427+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\WallRightFull_DoorTeleport.png</Source>
+      <Name>walls\WallRightFull_DoorTeleport</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\WallRightFull_DoorTeleport.xnb</Output>
+      <Time>2019-02-18T19:01:31.9985029+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\WallLeft_DoorTeleport.png</Source>
+      <Name>walls\WallLeft_DoorTeleport</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\WallLeft_DoorTeleport.xnb</Output>
+      <Time>2019-02-18T19:16:38.9843075+01:00</Time>
+    </Item>
+    <Item>
+      <Source>chests\woodenChest.png</Source>
+      <Name>chests\woodenChest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\chests\woodenChest.xnb</Output>
+      <Time>2019-02-20T13:20:16.8824757+01:00</Time>
+    </Item>
+    <Item>
+      <Source>weapon\poor_sword.png</Source>
+      <Name>weapon\poor_sword</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\weapon\poor_sword.xnb</Output>
+      <Time>2019-02-21T21:34:26.9737088+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\WallBack_Stone.png</Source>
+      <Name>walls\WallBack_Stone</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\WallBack_Stone.xnb</Output>
+      <Time>2019-02-21T21:00:34.774117+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\WallFront_Stone.png</Source>
+      <Name>walls\WallFront_Stone</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\WallFront_Stone.xnb</Output>
+      <Time>2019-02-21T21:00:34.7691044+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\WallLeft_Stone.png</Source>
+      <Name>walls\WallLeft_Stone</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\WallLeft_Stone.xnb</Output>
+      <Time>2019-02-21T21:00:34.7710995+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\WallRight_Stone.png</Source>
+      <Name>walls\WallRight_Stone</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\WallRight_Stone.xnb</Output>
+      <Time>2019-02-21T21:00:34.7720958+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\Floor_Dirt.png</Source>
+      <Name>walls\Floor_Dirt</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\Floor_Dirt.xnb</Output>
+      <Time>2019-02-21T21:00:45.8868948+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\Floor_Field.png</Source>
+      <Name>walls\Floor_Field</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\Floor_Field.xnb</Output>
+      <Time>2019-02-21T21:00:45.8879074+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\Floor_Grass.png</Source>
+      <Name>walls\Floor_Grass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\Floor_Grass.xnb</Output>
+      <Time>2019-02-21T21:00:45.8858779+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\WallLeftShort_Stone.png</Source>
+      <Name>walls\WallLeftShort_Stone</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\WallLeftShort_Stone.xnb</Output>
+      <Time>2019-02-21T22:20:56.1878855+01:00</Time>
+    </Item>
+    <Item>
+      <Source>npcs\farmer.png</Source>
+      <Name>npcs\farmer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\npcs\farmer.xnb</Output>
+      <Time>2019-02-21T23:05:50.0844896+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\WallBack_DoorTeleport.png</Source>
+      <Name>walls\WallBack_DoorTeleport</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\WallBack_DoorTeleport.xnb</Output>
+      <Time>2019-03-29T18:40:55.6304018+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\WallFront_DoorTeleport.png</Source>
+      <Name>walls\WallFront_DoorTeleport</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\walls\WallFront_DoorTeleport.xnb</Output>
+      <Time>2019-03-29T18:58:11.4414671+01:00</Time>
+    </Item>
+    <Item>
+      <Source>enemies\Krakus.png</Source>
+      <Name>enemies\Krakus</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\enemies\Krakus.xnb</Output>
+      <Time>2019-03-29T19:26:44.9181831+01:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <ContentProjectGUID>{55BE99FD-A76F-40AC-BF71-C96D7A9886FD}</ContentProjectGUID>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>Reach</TargetProfile>
+      <BuildConfiguration>Release</BuildConfiguration>
+      <CompressContent>true</CompressContent>
+      <RootDirectory>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGameContent\</RootDirectory>
+      <LoggerRootDirectory>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\</LoggerRootDirectory>
+      <IntermediateDirectory>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\obj\x86\Release\</IntermediateDirectory>
+      <OutputDirectory>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Release\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2011-09-01T16:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2011-09-01T16:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2011-09-01T16:22:30+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2018-07-31T22:52:22.5333707+02:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

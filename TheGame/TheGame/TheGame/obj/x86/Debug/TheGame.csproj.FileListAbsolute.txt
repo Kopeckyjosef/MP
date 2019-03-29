@@ -58,3 +58,6 @@ d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\C
 d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\walls\Floor_Grass.xnb
 d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\walls\WallLeftShort_Stone.xnb
 d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\npcs\farmer.xnb
+d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\walls\WallBack_DoorTeleport.xnb
+d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\walls\WallFront_DoorTeleport.xnb
+d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\enemies\Krakus.xnb

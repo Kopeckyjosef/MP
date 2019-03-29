@@ -36,6 +36,7 @@ namespace TheGame
         }
         protected override void Initialize()
         {
+            End.g = this;
             this.background = this.Content.Load<Texture2D>(@"background");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             GraficStuff.Initialize(this.spriteBatch, this.Content, windowWidth, windowHeight);

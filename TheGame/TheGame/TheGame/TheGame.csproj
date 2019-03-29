@@ -62,8 +62,8 @@
     <Compile Include="GameObjects\LevelBody.cs" />
     <Compile Include="GameObjects\Menu.cs" />
     <Compile Include="Objects\Character.cs" />
+    <Compile Include="Objects\Characters\Krakus.cs" />
     <Compile Include="Objects\Characters\Player.cs" />
-    <Compile Include="Objects\Characters\testEnemy.cs" />
     <Compile Include="Objects\Coordinates.cs" />
     <Compile Include="Objects\Enemy.cs" />
     <Compile Include="Objects\Event.cs" />
@@ -88,6 +88,7 @@
     <Compile Include="Utility\Access.cs" />
     <Compile Include="Utility\BottomBar.cs" />
     <Compile Include="Utility\Collision.cs" />
+    <Compile Include="Utility\End.cs" />
     <Compile Include="Utility\EnemyCollision.cs" />
     <Compile Include="Utility\EnemyGenerator.cs" />
     <Compile Include="Utility\GearLoader.cs" />
@@ -119,22 +120,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Armor\Armor.csv" />
+    <None Include="Maps\Additional\EnemyCrypt.csv" />
     <None Include="Maps\Additional\Fields.csv" />
     <None Include="Maps\Additional\Map.csv" />
     <None Include="Maps\Additional\MiddleCrypt.csv" />
     <None Include="Maps\Additional\StartCrypt.csv" />
+    <None Include="Maps\EnemyCrypt.csv" />
     <None Include="Maps\Fields.csv" />
     <None Include="Maps\Map.csv" />
+    <None Include="Maps\MapEnemies\EnemyCrypt.csv" />
     <None Include="Maps\MapEnemies\Fields.csv" />
     <None Include="Maps\MapEnemies\Map.csv" />
     <None Include="Maps\MapEnemies\MiddleCrypt.csv" />
     <None Include="Maps\MapEnemies\StartCrypt.csv" />
+    <None Include="Maps\MapNPCs\EnemyCrypt.csv" />
     <None Include="Maps\MapNPCs\Fields.csv" />
     <None Include="Maps\MapNPCs\Map.csv" />
     <None Include="Maps\MapNPCs\MiddleCrypt.csv" />
     <None Include="Maps\MapNPCs\StartCrypt.csv" />
     <None Include="Maps\MiddleCrypt.csv" />
     <None Include="Maps\StartCrypt.csv" />
+    <None Include="Maps\Teleporters\EnemyCrypt.csv" />
     <None Include="Maps\Teleporters\Fields.csv" />
     <None Include="Maps\Teleporters\Map.csv" />
     <None Include="Maps\Teleporters\MiddleCrypt.csv" />

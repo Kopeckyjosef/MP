@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using TheGame.Objects;
+using TheGame.Objects.Characters;
 using TheGameNamespace.Objects;
 
 namespace TheGame.Utility
@@ -32,7 +33,7 @@ namespace TheGame.Utility
                     break;
                 }
                 string[] data = line.Split(';');
-                enemies.Add(GenerateEnemy(new Coordinates(float.Parse(data[1]), float.Parse(data[2])), data[0], GraficStuff.Player.Level));
+                enemies.Add(GenerateEnemy(new Coordinates(float.Parse(data[0]), float.Parse(data[1])), data[2], GraficStuff.Player.Level));
             }
             return enemies;
         }
@@ -45,9 +46,11 @@ namespace TheGame.Utility
             enemy.Health = enemy.Level * 15 + 100;
             enemy.MaximumStamina = enemy.Level * 9 + 50;
             enemy.Stamina = enemy.Level * 9 + 50;
-            // ADD Equip
-
-            //
+            
+            if (textureName == "Krakus")
+            {
+                enemy = new Krakus(coordinates);
+            }
 
             return enemy;
         }

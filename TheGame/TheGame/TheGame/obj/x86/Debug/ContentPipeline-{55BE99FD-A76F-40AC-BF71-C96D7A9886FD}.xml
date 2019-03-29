@@ -397,6 +397,33 @@
       <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\npcs\farmer.xnb</Output>
       <Time>2019-02-21T23:05:50.0844896+01:00</Time>
     </Item>
+    <Item>
+      <Source>walls\WallBack_DoorTeleport.png</Source>
+      <Name>walls\WallBack_DoorTeleport</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\walls\WallBack_DoorTeleport.xnb</Output>
+      <Time>2019-03-29T18:40:55.6304018+01:00</Time>
+    </Item>
+    <Item>
+      <Source>walls\WallFront_DoorTeleport.png</Source>
+      <Name>walls\WallFront_DoorTeleport</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\walls\WallFront_DoorTeleport.xnb</Output>
+      <Time>2019-03-29T18:58:11.4414671+01:00</Time>
+    </Item>
+    <Item>
+      <Source>enemies\Krakus.png</Source>
+      <Name>enemies\Krakus</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>d:\documents\visual studio 2015\Projects\TheGame\TheGame\TheGame\bin\x86\Debug\Content\enemies\Krakus.xnb</Output>
+      <Time>2019-03-29T19:26:44.9181831+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{55BE99FD-A76F-40AC-BF71-C96D7A9886FD}</ContentProjectGUID>

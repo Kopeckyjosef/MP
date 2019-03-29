@@ -2,4 +2,5 @@
 0;11;WallLeft_DoorTeleport;17;4;StartCrypt
 21;10;WallRightFull_DoorTeleport;1;14;Fields
 21;11;WallRightFull_DoorTeleport;1;14;Fields
-7;7;woodenChest;;
+10;0;WallBack_DoorTeleport;6;6;EnemyCrypt
+11;0;WallBack_DoorTeleport;6;6;EnemyCrypt

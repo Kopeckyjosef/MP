@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TheGame.Objects.Characters;
 using TheGame.Utility;
 using TheGameNamespace.Objects;
 
@@ -21,6 +22,7 @@ namespace TheGame.Objects
         public GameTexture texture;
         protected string name;
         public double speed;
+        protected int basicDmg = 5;
         public bool isFacingRight { get; private set; }
         public void ChangeDirection(bool isFacingRight)
         {
@@ -45,15 +47,16 @@ namespace TheGame.Objects
                     armor += s.inventoryItem.Armor;
                 } 
             }
-            this.Health -= (damage / 100) * (100 - armor);
+            this.Health -= (int)(((float)damage / 100F) * (100 - armor));
             if (this.Health <= 0)
             {
                 this.Die();
             }
         }
-        public int DealDmg()
+        public void DealDmg(Character attacked)
         {
             int damage = 0;
+            damage += this.basicDmg;
             foreach (Slot s in this.Inventory.slots)
             {
                 if (s.inventoryItem != null)
@@ -61,7 +64,7 @@ namespace TheGame.Objects
                     damage += s.inventoryItem.Damage;
                 }
             }
-            return damage;
+            attacked.TakeDmg(damage);
         }
         public void Die()
         {
@@ -73,8 +76,8 @@ namespace TheGame.Objects
             {
                 Access.Gamebody.returnNPCs().Remove((NPC)this);
             }
-            else {
-
+            else if (this is Player) {
+                End.ExitGame();
             }
         }
         public override void Draw()

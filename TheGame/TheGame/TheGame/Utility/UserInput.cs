@@ -17,16 +17,22 @@ namespace TheGame.Utility
         private List<Keys> alreadyPressed = new List<Keys>();
 
         private int timer;
+        private int attackTimer;
         private List<Keys> alreadyUsed = new List<Keys>();
         public UserInput(Player player)
         {
             this.player = player;
             this.timer = 0;
+            this.attackTimer = 0;
         }
 
         public void GetUserInput(GameTime gameTime)
         {
             this.timer += gameTime.ElapsedGameTime.Milliseconds;
+            if (this.attackTimer > 0)
+            {
+                this.attackTimer -= gameTime.ElapsedGameTime.Milliseconds;
+            }
             this.lastKeyboard = Keyboard.GetState();
             if (Pause.IsPaused)
             {
@@ -130,7 +136,11 @@ namespace TheGame.Utility
                 }
                 if (this.lastKeyboard.IsKeyDown(Keys.J))
                 {
-                    Collision.Attack();
+                    if (this.attackTimer <= 0)
+                    {
+                        Collision.Attack();
+                        this.attackTimer = 500;
+                    }
                 }
                 if (this.lastKeyboard.IsKeyDown(Keys.E))
                 {

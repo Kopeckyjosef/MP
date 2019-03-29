@@ -61,13 +61,13 @@ namespace TheGame.Utility
             if (Player.isFacingRight)
             {
                 List<Enemy> en = Access.Gamebody.returnEnemies().Where(x =>
-                    x.Coordinates.x <= Player.Coordinates.x + 1 &&
+                    x.Coordinates.x <= Player.Coordinates.x + 1.5 &&
                     x.Coordinates.x >= Player.Coordinates.x &&
-                    x.Coordinates.y <= Player.Coordinates.y + 1 &&
-                    x.Coordinates.y >= Player.Coordinates.y - 1).ToList();
+                    x.Coordinates.y <= Player.Coordinates.y + 1.5 &&
+                    x.Coordinates.y >= Player.Coordinates.y - 1.5).ToList();
                 foreach (Enemy e in en)
                 {
-                    e.TakeDmg(Player.DealDmg());
+                    Player.DealDmg(e);
                 }
             }
             else
@@ -79,7 +79,7 @@ namespace TheGame.Utility
                     x.Coordinates.y >= Player.Coordinates.y - 1).ToList();
                 foreach (Enemy e in en)
                 {
-                    e.TakeDmg(Player.DealDmg());
+                    Player.DealDmg(e);
                 }
             }
         }

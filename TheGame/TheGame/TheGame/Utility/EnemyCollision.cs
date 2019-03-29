@@ -13,6 +13,38 @@ namespace TheGame.Utility
     {
         public static void GoForPlayer(Enemy enemy, GameTime gameTime)
         {
+            float x = GraficStuff.Player.Coordinates.x - enemy.Coordinates.x;
+            float y = GraficStuff.Player.Coordinates.y - enemy.Coordinates.y;
+            double range = Math.Sqrt(x * x + y * y);
+            enemy.Timer += gameTime.ElapsedGameTime.Milliseconds;
+
+            if (range > 1.5)
+            {
+                if (x > 0)
+                {
+                    enemy.Coordinates.x += (float)(gameTime.ElapsedGameTime.Milliseconds * enemy.speed / 1000);
+                }
+                if (y > 0)
+                {
+                    enemy.Coordinates.y += (float)(gameTime.ElapsedGameTime.Milliseconds * enemy.speed / 1000 / 2);
+                }
+                if (x < 0)
+                {
+                    enemy.Coordinates.x -= (float)(gameTime.ElapsedGameTime.Milliseconds * enemy.speed / 1000);
+                }
+                if (y < 0)
+                {
+                    enemy.Coordinates.y -= (float)(gameTime.ElapsedGameTime.Milliseconds * enemy.speed / 1000 / 2);
+                }
+            }        
+
+            if (enemy.Timer >= 1000 && range < 1.5)
+            {
+                enemy.DealDmg(GraficStuff.Player);
+            }
+
+            return;
+
             if (enemy.Timer >= 500)
             {
                 enemy.CurrentPath = FindPlayer(enemy);

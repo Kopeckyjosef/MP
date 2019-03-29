@@ -24,9 +24,9 @@ namespace TheGame.Objects
         {
             this.Timer += gameTime.ElapsedGameTime.Milliseconds;
             EnemyCollision.GoForPlayer(this, gameTime);
-            if (this.Timer > 500)
+            if (this.Timer > 1000)
             {
-                this.Timer -= 500;
+                this.Timer -= 1000;
             }
         }
     }

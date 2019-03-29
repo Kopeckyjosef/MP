@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TheGame.Utility;
 using TheGameNamespace.Objects;
 
 namespace TheGame.Objects.Characters
@@ -33,6 +34,11 @@ namespace TheGame.Objects.Characters
                 this.levelProgress -= this.Level * 100;
                 this.Level += 1;
             }
+        }
+
+        public new void Die()
+        {
+            End.ExitGame();
         }
     }
 }
